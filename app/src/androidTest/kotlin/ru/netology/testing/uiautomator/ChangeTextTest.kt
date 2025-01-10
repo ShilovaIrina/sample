@@ -25,6 +25,7 @@ class ChangeTextTest {
     private lateinit var device: UiDevice
     private val textToSet = "Netology"
     private val emptyField = "  "
+    private val textView = "Привет, UiAutomator!"
 
 
 //    @Test
@@ -121,7 +122,7 @@ class ChangeTextTest {
         device.findObject(By.res(packageName, "buttonChange")).click()
 
         val result = device.findObject(By.res(packageName, "textToBeChanged")).text
-        assertEquals(result, emptyField)
+        assertEquals(result, textView)
     }
 
     @Test
