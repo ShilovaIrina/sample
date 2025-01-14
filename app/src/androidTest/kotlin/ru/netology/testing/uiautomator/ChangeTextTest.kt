@@ -25,7 +25,6 @@ class ChangeTextTest {
     private lateinit var device: UiDevice
     private val textToSet = "Netology"
     private val emptyField = "  "
-    private val textView = "Привет, UiAutomator!"
 
 
 //    @Test
@@ -118,6 +117,7 @@ class ChangeTextTest {
         val packageName = MODEL_PACKAGE
         waitForPackage(packageName)
 
+        val textView = device.findObject(By.res(packageName, "textToBeChanged")).text
         device.findObject(By.res(packageName, "userInput")).text = emptyField
         device.findObject(By.res(packageName, "buttonChange")).click()
 
@@ -132,11 +132,8 @@ class ChangeTextTest {
 
         device.findObject(By.res(packageName, "userInput")).text = textToSet
         device.findObject(By.res(packageName, "buttonActivity")).click()
-
+        Thread.sleep(10)
         val result = device.findObject(By.res(packageName, "text")).text
         assertEquals(result, textToSet)
     }
 }
-
-
-
